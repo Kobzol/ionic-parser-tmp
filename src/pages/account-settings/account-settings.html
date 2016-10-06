@@ -1,0 +1,43 @@
+<ion-header class="accounts-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+    <ion-buttons end class="buttons">
+      <ion-spinner *ngIf="requestLoading"></ion-spinner>
+      <button ion-button (click)="saveUserSettings()">
+        Uložit
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-spinner *ngIf="userSettings === null"></ion-spinner>
+  <ion-list *ngIf="userSettings !== null">
+    <ion-item>
+      <ion-label>Heslo</ion-label>
+      <ion-input type="password" name="password" (change)="changePassword($event.target.value)"></ion-input>
+    </ion-item>
+    <ion-item-divider>Primární kontakt</ion-item-divider>
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input type="email" name="email2" [(ngModel)]="userSettings.email1"></ion-input>
+    </ion-item>
+    <ion-item *ngFor="let emailSetting of userSettings.emailMessageSettings1; let i = index; trackBy:trackByIndex">
+      <ion-label>{{ getEmailSettingLabel(i) }}</ion-label>
+      <ion-checkbox name="email1-settings" [(ngModel)]="userSettings.emailMessageSettings1[i]"></ion-checkbox>
+    </ion-item>
+    <ion-item-divider>Alternativní kontakt</ion-item-divider>
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input type="email" name="email2" [(ngModel)]="userSettings.email2"></ion-input>
+    </ion-item>
+    <ion-item *ngFor="let emailSetting of userSettings.emailMessageSettings2; let i = index; trackBy:trackByIndex">
+      <ion-label>{{ getEmailSettingLabel(i) }}</ion-label>
+      <ion-checkbox name="email2-settings" [(ngModel)]="userSettings.emailMessageSettings2[i]"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ion-content>

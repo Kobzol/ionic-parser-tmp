@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="canteen">
+  <h1>{{ canteen.name }}</h1>
+  <ion-card>
+    <ion-card-header>Kontakt</ion-card-header>
+    <ion-list>
+      <ion-item>
+        <ion-icon name="home" item-left></ion-icon>
+        <ion-label>{{ canteen.street }}, {{ canteen.city }}, {{ canteen.zip }}</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="call" item-left></ion-icon>
+        <ion-label><a href="tel:{{ canteen.telephone }}">{{ canteen.telephone }}</a></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="mail" item-left></ion-icon>
+        <ion-label><a href="mailto:{{ canteen.email }}">{{ canteen.email }}</a></ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-icon name="globe" item-left></ion-icon>
+        <ion-label><a href="{{ normalizeUrl('https://ahoj') }}">{{ canteen.url }}</a></ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card *ngIf="canteen.text !== ''">{{ canteen.text }}</ion-card>
+</ion-content>

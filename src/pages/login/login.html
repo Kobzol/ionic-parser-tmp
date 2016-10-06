@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="login">
+  <ion-item>
+    <ion-label>Uživatelský účet</ion-label>
+    <ion-select [(ngModel)]="userStorage.activeLocalAccount"
+                (ionChange)="loadFormAccount()"
+                [cancelText]="'Zrušit'"
+                [okText]="'Vybrat'">
+      <ion-option *ngFor="let account of userStorage.localAccounts; let i = index" [value]="i">{{ account.name }}</ion-option>
+    </ion-select>
+  </ion-item>
+  <form (submit)="onLoginFormSubmit($event)">
+    <ion-list>
+      <ion-item>
+        <ion-label>Jídelna</ion-label>
+        <ion-input required type="number" min="1" max="99999" name="canteen" [(ngModel)]="form.canteen"></ion-input>
+        <ion-icon class="canteen-list" item-right name="list-box" (click)="goToCanteenList()"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label>Uživatel</ion-label>
+        <ion-input required type="text" name="username" [(ngModel)]="form.username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Heslo</ion-label>
+        <ion-input required type="password" name="password" [(ngModel)]="form.password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Uložit údaje</ion-label>
+        <ion-checkbox name="remember" [(ngModel)]="form.remember"></ion-checkbox>
+      </ion-item>
+    </ion-list>
+    <div padding>
+        <button ion-button type="submit" block>Přihlásit se</button>
+    </div>
+  </form>
+  <div *ngIf="shouldShowOfflineOrders()">
+    <button ion-button (click)="showOfflineOrders()">Offline objednávky</button>
+  </div>
+</ion-content>

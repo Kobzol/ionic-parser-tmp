@@ -1,0 +1,6 @@
+<ion-item class="row row-food" (click)="onFoodChangeRequest($event)">
+  <ion-checkbox [checked]="food.isOrdered()"
+                [disabled]="true"></ion-checkbox>
+  <ion-label>{{ food.name }}</ion-label>
+  <ion-icon *ngIf="shouldShowContextMenu()" item-right name="more" class="context" (click)="showContextMenu()"></ion-icon>
+</ion-item>

@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>{{ 'LOCAL_SETTINGS_GENERAL_HEADER' | translate }}</ion-list-header>
+    <ion-item>
+      <ion-label>{{ 'LOCAL_SETTINGS_LANGUAGE_LABEL' | translate }}</ion-label>
+      <ion-select [(ngModel)]="userStorage.language"
+                  (ionChange)="changeLanguage($event)"
+                  [cancelText]="'Zrušit'"
+                  [okText]="'Vybrat'">
+        <ion-option *ngFor="let language of getLanguages()" [value]="language">
+          {{ ('LOCAL_SETTINGS_LANGUAGE_DESC_' + language.toUpperCase()) | translate }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="showAccountPage()">{{ 'LOCAL_SETTINGS_ACCOUNTS_LABEL' | translate }}</button>
+    </ion-item>
+    <ion-list-header>Služba dnešní oběd</ion-list-header>
+    <ion-item>
+      <ion-label>
+        <h2>Povolit službu</h2>
+        <p>Každý den se zobrazí upozornění s objednaným jídlem pro uživatelský účet č. 1</p>
+      </ion-label>
+      <ion-toggle [(ngModel)]="userStorage.todayLaunchEnabled"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Čas upozornění</h2>
+      </ion-label>
+      <ion-datetime
+                    [(ngModel)]="userStorage.todayLaunchTime"
+                    (ionChange)="todayLaunchTimeChanged()"
+                    displayFormat="HH:mm"
+                    pickerFormat="HH mm"
+                    cancelText="Zrušit"
+                    doneText="Uložit"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <button ion-button (click)="showTodayLunchAlertOptionsDialog()">Nastavení upozornění</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

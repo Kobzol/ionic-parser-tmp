@@ -1,0 +1,8 @@
+<ion-list class="products">
+  <ion-list-header>Produkty</ion-list-header>
+  <ion-item class="product" *ngFor="let product of food.products" (click)="onProductChangeRequest(product)">
+    <ion-checkbox [checked]="product.isOrdered()" [disabled]="true"></ion-checkbox>
+    <ion-label>{{ product.name }} ({{ product.cost | money }})</ion-label>
+  </ion-item>
+</ion-list>
+<button ion-button block (click)="close()">Zavřít</button>

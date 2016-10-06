@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Podrobnosti</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="close()">Zavřít</button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-item *ngIf="food.kind !== ''">
+      <ion-label>Druh: {{ food.kind}}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="food.description !== ''">
+      <ion-label>Popis: {{ food.description }}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="food.endOfOrder !== null">
+      <ion-label>Konec objednávání: {{ food.endOfOrder | date:"d.M.yyyy HH:mm:ss" }}</ion-label>
+    </ion-item>
+    <ion-item *ngIf="food.endOfUnsubscribe !== null">
+      <ion-label>Konec odhlašování: {{ food.endOfUnsubscribe | date:"d.M.yyyy HH:mm:ss" }}</ion-label>
+    </ion-item>
+    <template [ngIf]="food.allergens.length > 0">
+      <ion-list-header>Alergeny</ion-list-header>
+      <ion-item *ngFor="let allergen of food.allergens">
+        <ion-label>{{ allergen }}</ion-label>
+      </ion-item>
+    </template>
+  </ion-list>
+</ion-content>

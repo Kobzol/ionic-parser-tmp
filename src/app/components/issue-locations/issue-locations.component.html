@@ -1,0 +1,12 @@
+<ion-list class="issue-locations">
+  <ion-list-header>Výdejní místa</ion-list-header>
+  <ion-item class="issue-location"
+            *ngFor="let location of user.issueLocations"
+            (click)="onIssueLocationChangeRequest(location)">
+    <ion-radio [disabled]="true"
+               [value]="location.id"
+               [checked]="location.id === food.issueLocationId"></ion-radio>
+    <ion-label>{{ location.name }}</ion-label>
+  </ion-item>
+</ion-list>
+<button ion-button block (click)="close()">Zavřít</button>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="issues">
+  <ion-grid *ngIf="issues !== null && issues.length > 0">
+    <ion-row>
+      <ion-col width-25 class="header">Datum</ion-col>
+      <ion-col width-33 class="header">Vyzvednuto</ion-col>
+      <ion-col class="header">Název jídla</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let issue of issues" class="data-row">
+      <ion-col width-25>{{ issue.issueDate | date:"d. M. yyyy" }}</ion-col>
+      <ion-col width-33 class="label" [class.issued]="isIssued(issue)">
+        <ion-icon [name]="isIssued(issue) ? 'checkmark' : 'close'"></ion-icon>
+        {{ getIssueLabel(issue) }}
+      </ion-col>
+      <ion-col>{{ issue.foodName }}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-spinner *ngIf="issues === null"></ion-spinner>
+  <div *ngIf="issues !== null && issues.length === 0">Údaje o výdeji nejsou k dispozici.</div>
+</ion-content>

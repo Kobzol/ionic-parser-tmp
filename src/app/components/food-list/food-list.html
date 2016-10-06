@@ -1,0 +1,20 @@
+<ion-list>
+  <template ngFor let-row [ngForOf]="rows">
+    <ion-item-divider *ngIf="!row.isFood" class="row row-date">
+      <ion-label>{{ formatDate(row.data, "dddd, D. M.") }}</ion-label>
+      <template item-right [ngIf]="row.container.hasMultipleFoods()">
+        <button ion-button icon-right (click)="orderDay(true, row.data)">
+          Přihlásit
+          <ion-icon name="checkmark"></ion-icon>
+        </button>
+        <button ion-button icon-right (click)="orderDay(false, row.data)">
+          Odhlásit
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </template>
+    </ion-item-divider>
+    <food *ngIf="row.isFood"
+          [food]="row.data"
+          [group]="row.container"></food>
+  </template>
+</ion-list>

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Výběr účtu</ion-label>
+    <ion-select [(ngModel)]="selectedAccountIndex">
+      <ion-option *ngFor="let account of accounts; let i = index" [value]="i">{{ account.name }}</ion-option>
+    </ion-select>
+  </ion-item>
+  <form>
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Název</ion-label>
+        <ion-input type="text" name="name" [(ngModel)]="selectedAccount.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Jídelna</ion-label>
+        <ion-input type="number" name="canteen" min="1" max="99999" [(ngModel)]="selectedAccount.canteen"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Uživatel</ion-label>
+        <ion-input type="text" name="username" [(ngModel)]="selectedAccount.username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Heslo</ion-label>
+        <ion-input type="password" name="password" [(ngModel)]="selectedAccount.password"></ion-input>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

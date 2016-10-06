@@ -1,0 +1,12 @@
+<ion-list class="diets">
+  <ion-list-header>Diety</ion-list-header>
+  <ion-item class="diet"
+            *ngFor="let diet of food.filterValidDiets(user.diets)"
+            (click)="onDietChangeRequest(diet)">
+    <ion-radio [disabled]="true"
+               [value]="diet.id"
+               [checked]="diet.id === food.dietId"></ion-radio>
+    <ion-label>{{ diet.name }}</ion-label>
+  </ion-item>
+</ion-list>
+<button ion-button block (click)="close()">Zavřít</button>

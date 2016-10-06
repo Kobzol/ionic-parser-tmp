@@ -1,0 +1,75 @@
+@import "../../theme/variables";
+
+.orders-header {
+  .buttons {
+    display: flex;
+
+    button {
+      margin-left: 0.2em;
+      padding: 5px;
+    }
+
+    .header-icon {
+      font-size: 2.5em;
+
+      &.account-details {
+        //color: #1E90FF;
+      }
+      &.save-orders {
+        //color: #32DB64;
+      }
+    }
+  }
+}
+
+.orders {
+  .foods {
+    .row {
+      padding-left: 8px;
+      background-color: #FFFFFF;
+
+      &.row-food {
+        cursor: pointer;
+      }
+
+      ion-label, ion-checkbox {
+        opacity: 1;
+      }
+      ion-label {
+        margin: 0.8rem;
+      }
+      ion-checkbox {
+        margin-right: 12px;
+        pointer-events: none;
+      }
+    }
+  }
+}
+.orders-popover {
+  .popover-viewport {
+    padding: 10px;
+  }
+  ion-label {
+    font-size: 1.3rem;
+  }
+  .products {
+    ion-label, ion-checkbox {
+      opacity: 1;
+    }
+    ion-checkbox {
+      pointer-events: none;
+    }
+
+    .product {
+      cursor: pointer;
+    }
+  }
+  .issue-locations, .diets {
+    ion-item {
+      cursor: pointer;
+    }
+    ion-label, ion-radio {
+      opacity: 1;
+    }
+  }
+}

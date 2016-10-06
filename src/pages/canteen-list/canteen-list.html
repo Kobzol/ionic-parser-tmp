@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar [placeholder]="'Vyhledat město'" [(ngModel)]="filter" (ionInput)="onSearchChange()"></ion-searchbar>
+  <ion-spinner *ngIf="groups.length === 0"></ion-spinner>
+  <ion-list class="canteen-list">
+    <template ngFor [ngForOf]="groups" let-group>
+      <ion-item-divider class="city"
+              [hidden]="!matchesFilter(group)"
+              (click)="toggleGroup(group)">{{ group.identifier }}</ion-item-divider>
+      <template [ngIf]="group.visible">
+        <ion-item *ngFor="let canteen of group.canteens" class="canteen" (click)="selectCanteen(canteen)">
+          {{ canteen.name }} ({{ canteen.id }})
+        </ion-item>
+      </template>
+    </template>
+  </ion-list>
+</ion-content>

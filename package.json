@@ -1,0 +1,77 @@
+{
+  "name": "strava5",
+  "author": "Jakub Beránek",
+  "homepage": "http://www.strava.cz/",
+  "private": true,
+  "scripts": {
+    "build": "ionic-app-scripts build",
+    "watch": "ionic-app-scripts watch",
+    "serve:before": "watch",
+    "emulate:before": "build",
+    "deploy:before": "build",
+    "build:before": "build",
+    "run:before": "run"
+  },
+  "dependencies": {
+    "@angular/forms": "^2.0.1",
+    "@angular/http": "^2.0.1",
+    "@ionic/storage": "^1.0.3",
+    "@types/lodash": "4.14.36",
+    "@types/moment": "2.13.0",
+    "@types/numeral": "0.0.17",
+    "ionic-angular": "^2.0.0-rc.0",
+    "ionic-native": "^2.0.3",
+    "ionicons": "^3.0.0",
+    "lodash": "^4.13.1",
+    "moment": "^2.13.0",
+    "ng2-translate": "^3.0.0",
+    "numeral": "^1.5.3",
+    "x2js": "^2.0.1"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "0.0.30",
+    "codelyzer": "^1.0.0-beta.0",
+    "typescript": "^2.0.3"
+  },
+  "description": "Strava.cz S5",
+  "cordovaPlugins": [
+    "cordova-plugin-device",
+    "cordova-plugin-console",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-statusbar",
+    "ionic-plugin-keyboard",
+    "cordova-plugin-network-information",
+    "ionic-plugin-deploy",
+    "cordova-plugin-admobpro",
+    "cordova-plugin-extension",
+    {
+      "locator": "https://github.com/katzer/cordova-plugin-local-notifications.git",
+      "id": "de.appplant.cordova.plugin.local-notification"
+    },
+    "cordova-plugin-app-event",
+    "cordova-plugin-google-analytics",
+    "cordova-sqlite-storage",
+    "cc.fovea.cordova.purchase",
+    "cordova-plugin-globalization",
+    "cordova-plugin-x-toast",
+    "cordova-plugin-vibration",
+    {
+      "locator": "https://github.com/wnyc/cordova-plugin-wakeuptimer.git",
+      "id": "org.nypr.cordova.wakeupplugin"
+    },
+    "cordova-plugin-crosswalk-webview"
+  ],
+  "cordovaPlatforms": [
+    {
+      "platform": "android",
+      "version": "",
+      "locator": "android"
+    },
+    {
+      "platform": "browser",
+      "version": "",
+      "locator": "browser"
+    }
+  ]
+}

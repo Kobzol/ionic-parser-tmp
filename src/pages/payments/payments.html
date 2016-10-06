@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="payments">
+  <ion-grid *ngIf="payments !== null && payments.length > 0">
+    <ion-row>
+      <ion-col width-25 class="header">Datum</ion-col>
+      <ion-col width-20 class="header">Částka</ion-col>
+      <ion-col class="header">Popis</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let payment of payments" class="data-row">
+      <ion-col width-25>{{ payment.date | date:"d. M. yyyy" }}</ion-col>
+      <ion-col width-20>{{ payment.amount | money:false }}</ion-col>
+      <ion-col>{{ payment.description }}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-spinner *ngIf="payments === null"></ion-spinner>
+  <div *ngIf="payments !== null && payments.length === 0">Žádné platby nejsou k dispozici.</div>
+</ion-content>

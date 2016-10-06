@@ -1,0 +1,27 @@
+<ion-header class="orders-header">
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{ getTitle() }}</ion-title>
+    <ion-buttons end class="buttons">
+      <ion-spinner *ngIf="requestLoading"></ion-spinner>
+      <button ion-button icon-right color="secondary" (click)="saveOrders()">
+        Odeslat
+        <ion-icon class="header-icon save-orders" name="checkmark-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="orders">
+  <ion-refresher (ionRefresh)="onRefresherPull($event)" [enabled]="!loadingOrders">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-spinner *ngIf="loadingOrders"></ion-spinner>
+  <food-list *ngIf="!loadingOrders && orders.length > 0"
+             class="foods"
+             [foods]="orders">
+  </food-list>
+  <div *ngIf="!loadingOrders && orders.length === 0">Žádné objednávky nejsou k dispozici.</div>
+</ion-content>
